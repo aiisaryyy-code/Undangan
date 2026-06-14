@@ -33,10 +33,20 @@ if (openBtn) {
         playAudio();
 
         // Scroll halus langsung ke area konten pembuka pertama
-        const introSection = document.querySelector(".intro");
-        if (introSection) {
-            introSection.scrollIntoView({ behavior: "smooth" });
-        }
+       const introSection = document.getElementById("intro");
+
+if(introSection){
+
+    setTimeout(()=>{
+
+        window.scrollTo({
+            top:introSection.offsetTop-20,
+            behavior:"smooth"
+        });
+
+    },300);
+
+}
     });
 }
 
@@ -239,4 +249,16 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(() => loader.style.display = "none", 500);
         }, 1000);
     }
+    document.getElementById("open").addEventListener("click", function(){
+
+    // Hilangkan cover
+    document.querySelector(".cover").remove();
+
+    // Tampilkan isi undangan
+    document.querySelector(".main-content").classList.remove("content-hidden");
+
+    // Buka scroll
+    document.body.classList.remove("lock-scroll");
+
+});
 });
